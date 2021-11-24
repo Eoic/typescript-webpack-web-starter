@@ -1,5 +1,5 @@
 # TypeScript web starter.
-Primitive TypeScript project boilerplate with live reloading
+Primitive TypeScript project boilerplate with live reloading.
 
 # Features
 * SCSS support.
