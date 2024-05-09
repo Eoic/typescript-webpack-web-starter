@@ -1,20 +1,22 @@
 {
     "compilerOptions": {
-        "outDir": "./dist/",
-        "sourceMap": true,
-        "strict": true,
-        "noImplicitReturns": true,
-        "noImplicitAny": false,
-        "module": "es6",
-        "moduleResolution": "node",
-        "jsx": "react",
-        "jsxFactory": "jsx",
-        "target": "es5",
-        "allowJs": true,
-        "lib": [
-            "ES2017",
-            "DOM"
-        ]
+      "target": "ES2020",
+      "useDefineForClassFields": true,
+      "module": "ESNext",
+      "lib": ["ES2020", "DOM", "DOM.Iterable"],
+      "skipLibCheck": true,
+      "experimentalDecorators": true,
+  
+      /* Bundler mode */
+      "moduleResolution": "bundler",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+  
+      /* Linting */
+      "strict": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noFallthroughCasesInSwitch": true
     },
     "include": [
         "./src/**/*",
@@ -22,4 +24,5 @@
     "exclude": [
         "node_modules"
     ]
-}
+  }
+  

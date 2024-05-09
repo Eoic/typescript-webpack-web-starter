@@ -1,9 +1,7 @@
-const webpack = require('webpack');
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
   entry: './src/index.ts',
@@ -11,7 +9,7 @@ const config = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js'
   },
-  mode: "development",
+  mode: 'development',
   module: {
     rules: [
       {
@@ -31,7 +29,6 @@ const config = {
   },
   resolve: {
     extensions: [
-      '.tsx',
       '.ts',
       '.js'
     ]
@@ -48,17 +45,18 @@ const config = {
       }
     }
   },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, './dist'),
+    },
+    watchFiles: ['./src/*.html'],
+    compress: true,
+    hot: true,
+    port: 9000,
+  },
   plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      templateContent: ({ htmlWebpackPlugin }) => '<!DOCTYPE html><html><head><meta charset=\"utf-8\"><title>' + htmlWebpackPlugin.options.title + '</title></head><body><div id=\"app\"></div></body></html>',
-      filename: 'index.html',
-    }),
+    new HtmlWebpackPlugin({ template: './src/index.html' }),
     new MiniCssExtractPlugin(),
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-      openAnalyzer: false,
-    })
   ],
 };
 
